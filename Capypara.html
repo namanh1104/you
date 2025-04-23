@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <title>Capypara World</title>
+    <style>
+        :root{--bg:#fffaf0;--text:#333;--primary:#a0522d;--accent:#ff9800}
+        body.dark{--bg:#121212;--text:#e0e0e0;--primary:#ffa726;--accent:#ffb74d}
+        *{box-sizing:border-box;scroll-behavior:smooth}
+        body{margin:0;font-family:'Quicksand','Segoe UI',sans-serif;background:var(--bg);color:var(--text);transition:background 0.5s,color.5s}
+        header{position:sticky;top:0;background:var(--primary);color:#fff;padding:20px;z-index:1000;box-shadow:0 2px 10px #000;display:flex;justify-content:space-between;align-items:center}
+        header h1{margin:0;font-size:24px}
+        .theme-toggle{background:#fff;color:var(--primary);border:none;padding:8px 16px;border-radius:20px;cursor:pointer;transition:.3s}
+        .hero{height:50vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background-image:url(./Banner-BST-12-scaled.jpg);background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:scroll;color:#fff;text-shadow:0 0 10px #000}
+        .hero h2{font-size:48px;animation:fadeInUp 1s ease forwards}
+        .hero p{font-size:20px;animation:fadeInUp 2s ease forwards}
+        @keyframes fadeInUp {
+        0%{transform:translateY(30px);opacity:0}
+        100%{transform:translateY(0);opacity:1}
+        }
+        .about{padding:60px 20px;background:linear-gradient(to bottom,#fffaf0,#ffe4e1);animation:fadeIn 1s ease-in-out;box-shadow:0 10px 20px #a0522d;border-radius:20px}
+        .about-wrapper{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;max-width:1000px;margin:auto;gap:30px}
+        .about-text{flex:1 1 400px;animation:slideInLeft 1s ease forwards}
+        .about-text h2{color:var(--primary);font-size:32px;margin-bottom:20px}
+        .about-text p{font-size:18px;line-height:1.6;color:#121212}
+        .about-img{flex:1 1 300px;height:300px;background-image:url('./tải\ xuống.jpg');background-size:cover;background-position:center;border-radius:20px;box-shadow:0 10px 20px #000;animation:slideInRight 1s ease forwards}
+        @keyframes slideInLeft {
+        0%{opacity:0;transform:translateX(-50px)}
+        100%{opacity:1;transform:translateX(0)}
+        }
+        @keyframes slideInRight {
+        0%{opacity:0;transform:translateX(50px)}
+        100%{opacity:1;transform:translateX(0)}
+        }
+        @keyframes fadeIn {
+        from{opacity:0}
+        to{opacity:1}
+        }
+        @media(max-width:768px) {
+        .about-wrapper{flex-direction:column}
+        .about-img{height:250px;width:100%}
+        }
+        .gallery{padding:60px 20px;background-color:#fff0f5;text-align:center;box-shadow:0 10px 20px #a0522d;border-radius:20px}
+        .gallery h2{font-size:32px;margin-bottom:40px;color:#a0522d;margin-top:-30px}
+        .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1100px;margin:auto}
+        .gallery-grid img{width:100%;border-radius:15px;box-shadow:0 10px 25px #000;transition:transform.4s ease,box-shadow.4s ease;cursor:pointer}
+        .gallery-grid img:hover{transform:scale(1.05);box-shadow:0 20px 40px #000}
+        section{max-width:900px;margin:40px auto;padding:20px;box-shadow:0 10px 20px #a0522d;border-radius:20px}
+        .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+        .card{background:red;backdrop-filter:blur(10px);padding:20px;border-radius:15px;box-shadow:0 5px 20px #000;transition:transform.3s}
+        .card:hover{transform:translateY(-5px)}
+        #countdown{font-size:24px;font-weight:700;text-align:center;margin-top:20px}
+        footer{background:var(--primary);color:#fff;text-align:center;padding:20px}
+        @media(max-width:600px) {
+        .hero h2{font-size:32px}
+        .hero p{font-size:16px}
+        }
+        .quote{background:#ffe4e1;padding:30px 20px;text-align:center}
+        .quote-container{font-size:24px;font-weight:500;color:#a0522d;max-width:700px;margin:auto;min-height:60px;font-weight:700}
+        .video-section{padding:40px;background-color:#f4f4f4;color:#000}
+        .video-container{max-width:850px;margin:auto;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px #000}
+        .features{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-around;padding:20px 0}
+        .decorated-card{position:relative;background:#fff;border-radius:20px;box-shadow:0 6px 20px #000;padding:20px;width:280px;transition:transform .3s}
+        .decorated-card:hover{transform:translateY(-5px)}
+        .decorated-card h3{margin-top:10px;color:#2c3e50;font-size:20px;margin-left:30px}
+        .decorated-card p{color:#555;font-size:16px}
+        .sticker{position:absolute;top:-10px;left:-10px;background-color:#ffecb3;padding:10px;border-radius:50%;font-size:24px;box-shadow:0 4px 8px #000}
+        @media(max-width:768px) {
+        .features{flex-direction:column;align-items:center}
+        }
+        body{line-height:1.6;color:#2c3e50;margin:0;padding:0}
+        section h2{font-size:28px;text-align:center;margin-bottom:30px;color:#34495e;position:relative}
+        section h2::after{content:"";display:block;width:60px;height:4px;background:#f39c12;margin:10px auto 0;border-radius:2px}
+        .about-wrapper{display:flex;gap:20px;align-items:center;flex-wrap:wrap;animation:fadeInUp 1s ease-in-out}
+        .about-text{flex:1;font-size:18px;animation:fadeIn 1.2s}
+        .about-img{flex:1;background-size:cover;background-position:center;border-radius:20px;box-shadow:0 4px 16px #000}
+        .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:20px}
+        .gallery-grid img{width:100%;height:auto;border-radius:16px;box-shadow:0 6px 18px #000;transition:transform .3s ease}
+        .gallery-grid img:hover{transform:scale(1.05)}
+        .decorated-card{position:relative;background:#fff;padding:20px;width:280px;border-radius:20px;box-shadow:0 10px 30px #000;transition:all .3s ease}
+        .decorated-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px #000}
+        .sticker{position:absolute;top:-10px;left:-10px;background:#fceabb;padding:10px;font-size:20px;border-radius:50%;box-shadow:0 2px 8px #000;animation:bounce 2s infinite}
+        .video-section{padding:40px 20px;background:#f5f9fc;text-align:center}
+        @keyframes fadeIn {
+        from{opacity:0}
+        to{opacity:1}
+        }
+        @keyframes fadeInUp {
+        from{opacity:0;transform:translateY(40px)}
+        to{opacity:1;transform:translateY(0)}
+        }
+        @keyframes bounce {
+        0%,100%{transform:translateY(0)}
+        50%{transform:translateY(-5px)}
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header: Phần tiêu đề trên trang -->
+    <header>
+        <h1>Thế Giới Capypara</h1> <!-- Tiêu đề trang -->
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button> <!-- Nút chuyển đổi chế độ sáng/tối -->
+    </header>
+
+    <!-- Hero Section: Phần chào mừng -->
+    <div class="hero">
+        <h2>Chào mừng đến với thế giới Capybara</h2> <!-- Tiêu đề phần hero -->
+        <p>Người bạn hiền lành nhất hành tinh</p> <!-- Mô tả về Capybara -->
+    </div>
+
+    <!-- About Section: Phần giới thiệu về Capybara -->
+    <section class="about">
+        <div class="about-wrapper">
+            <div class="about-text">
+                <h2>Giới thiệu về Capybara</h2> <!-- Tiêu đề phần giới thiệu -->
+                <p>
+                    Capybara là loài gặm nhấm lớn nhất thế giới, có nguồn gốc từ Nam Mỹ. Chúng hiền lành, thông minh và
+                    cực kỳ xã giao. Dù sống ở rừng ngập nước hay đồng cỏ, Capybara luôn giữ sự điềm đạm và đáng yêu đặc
+                    trưng.
+                </p>
+                <p>
+                    Với khả năng sống hài hòa với nhiều loài khác, Capybara được mệnh danh là “biểu tượng hòa bình” của
+                    thế giới động vật.
+                </p>
+            </div>
+            <div class="about-img"></div> <!-- Hình ảnh của Capybara -->
+        </div>
+    </section>
+
+    <!-- Gallery Section: Bộ sưu tập hình ảnh Capybara -->
+    <section class="gallery">
+        <h2>Bộ Sưu Tập Capybara</h2> <!-- Tiêu đề của phần gallery -->
+        <div class="gallery-grid">
+            <img src="./pngtree-cute-capybara-sitting-next-to-brush-picture-image_2610440.jpg" alt="Capybara 1">
+            <img src="./images (1).jpg" alt="Capybara 2">
+            <img src="./pngtree-three-capybaras-and-their-young-stand-near-a-water-image_2517694.jpg" alt="Capybara 3">
+            <img src="./20a144b7b179a654a79fbf9ea172d94c_t.jpeg" alt="Capybara 4">
+            <img src="./0d5a0134c82526c5d3e7f068cb525031_t.jpeg" alt="Capybara 5">
+            <img src="./pngtree-capybara-with-a-bottle-from-its-mouth-in-the-water-picture-image_2610443.jpg"
+                alt="Capybara 6">
+        </div>
+    </section>
+
+    <!-- Quote Section: Hiển thị câu trích dẫn động viên từ Capybara -->
+    <section class="quote">
+        <div class="quote-container">
+            <p id="quote-text"></p> <!-- Câu trích dẫn động viên được thay đổi mỗi lần -->
+        </div>
+    </section>
+    <section id="features">
+        <h2>Capybara có gì đặc biệt?</h2>
+        <div class="features">
+            <div class="card decorated-card">
+                <div class="sticker">🌟</div>
+                <h3>Siêu Thân Thiện</h3>
+                <p>Capybara sống hòa thuận với hầu hết các loài động vật khác, kể cả cá sấu!</p>
+            </div>
+            <div class="card decorated-card">
+                <div class="sticker">💧</div>
+                <h3>Thích Nước</h3>
+                <p>Chúng là bậc thầy bơi lội, có thể ở dưới nước đến 5 phút.</p>
+            </div>
+            <div class="card decorated-card">
+                <div class="sticker">👨‍👩‍👧‍👦</div>
+                <h3>Cuộc Sống Tập Thể</h3>
+                <p>Sống theo đàn từ 10 đến 40 cá thể, rất gắn bó và chăm sóc nhau.</p>
+            </div>
+        </div>
+        <!--đếm giờ
+        <div id="countdown"></div>-->
+    </section>
+
+    <!-- Video Section: Hiển thị video Capybara -->
+    <section id="video" class="video-section">
+        <h2>Khám Phá Capybara Qua Video</h2>
+        <div class="video-container">
+            <video width="100%" controls>
+                <source src="./capypara.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </div>
+    </section>
+
+    <!-- Footer: Phần chân trang -->
+    <footer>
+        © 2025 Thế Giới Capypara | Designed by Nam
+    </footer>
+
+    <!-- Mã JavaScript xử lý các tác vụ -->
+    <script>
+        // Hàm chuyển đổi chế độ sáng/tối
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+        }
+
+        // // Đếm ngược đến Ngày Capybara Quốc Tế
+        // const targetDate = new Date("July 10, 2025 00:00:00").getTime();
+        // const timer = setInterval(() => {
+        //     const now = new Date().getTime();
+        //     const diff = targetDate - now;
+
+        //     // Tính số ngày, giờ, phút, giây còn lại
+        //     const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        //     const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        //     const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        //     const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        //     // Hiển thị kết quả
+        //     const out = diff > 0
+        //         ? `🎉 Còn ${d} ngày ${h} giờ ${m} phút ${s} giây đến Ngày Capybara Quốc Tế!`
+        //         : "🐾 Hôm nay là Ngày Capybara Quốc Tế!";
+
+        //     document.getElementById('countdown').textContent = out;
+
+        //     if (diff < 0) clearInterval(timer);
+        // }, 1000);
+
+        // Các câu trích dẫn động viên từ Capybara
+        const quotes = [
+            "Capybara: 'Hòa bình là phong cách sống của tôi 🦦'",
+            "Capybara: 'Bạn càng chậm, bạn càng chill 🐢'",
+            "Capybara: 'Ai cũng là bạn nếu mình đủ dễ thương 😊'",
+            "Capybara: 'Đời đơn giản nếu mình không phức tạp hoá nó.'"
+        ];
+
+        let quoteIndex = 0;
+
+        // Hàm tạo hiệu ứng gõ chữ cho câu trích dẫn
+        function typeWriterEffect(text, i = 0) {
+            const element = document.getElementById('quote-text');
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i); // Thêm từng ký tự vào câu trích dẫn
+                setTimeout(() => typeWriterEffect(text, i + 1), 50); // Tăng chỉ số ký tự sau mỗi 50ms
+            } else {
+                // Khi câu trích dẫn hoàn thành, xóa và hiển thị câu tiếp theo
+                setTimeout(() => {
+                    element.innerHTML = '';
+                    quoteIndex = (quoteIndex + 1) % quotes.length; // Chuyển đến câu trích dẫn tiếp theo
+                    typeWriterEffect(quotes[quoteIndex]); // Tiếp tục tạo hiệu ứng gõ chữ
+                }, 3000); // Sau khi hoàn thành, đợi 3 giây rồi thay đổi câu trích dẫn
+            }
+        }
+        typeWriterEffect(quotes[quoteIndex]);
+    </script>
+</body>
+
+</html>
